@@ -98,7 +98,7 @@ generate_config() {
     echo '# Double-click on pane → toggle zoom'
     echo 'bind -n DoubleClick1Pane resize-pane -Z'
     echo '# Middle-click on pane → paste buffer'
-    echo 'bind -n MouseDown2Pane paste-buffer'
+    echo 'bind -n MouseDown2Pane select-pane -t= \; paste-buffer'
 
     # Right-click context menus (heredoc for complex quoting)
 cat << 'MOUSECONF'
