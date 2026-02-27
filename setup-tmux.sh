@@ -195,6 +195,10 @@ if [ -f "$TMUX_CONF" ] && [ "$(cat "$TMUX_CONF")" = "$WANT_CONF" ]; then
 else
     printf '%s\n' "$WANT_CONF" > "$TMUX_CONF"
     echo "  Config written."
+    if [ -n "${TMUX:-}" ]; then
+        tmux source-file "$TMUX_CONF"
+        echo "  Config reloaded."
+    fi
 fi
 
 # [4/4] Install plugins
