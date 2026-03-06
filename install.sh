@@ -108,7 +108,7 @@ setup_colors() {
 
 # --- [C] Component Registry --------------------------------------------------
 
-COMP_IDS=(shell tmux git tools essential-tools node uv go docker tailscale ssh claude-code codex gemini skills)
+COMP_IDS=(shell tmux git tools node uv go docker tailscale ssh claude-code codex gemini skills)
 
 COMP_NAMES=(
     "Shell Environment"
@@ -193,9 +193,9 @@ COMP_INSTALL_ONLY=(0 0 0 0 0 0 0 0 0 0 0 0 0 0)
 PRESET_ORDER=(minimal agent devops fullstack)
 PRESET_COMPS=(
     "shell tools git"
-    "shell tools essential-tools git node claude-code codex gemini skills"
-    "shell tools essential-tools git node go docker tailscale ssh"
-    "shell tmux git tools essential-tools node uv go docker ssh claude-code codex gemini skills"
+    "shell tools git node claude-code codex gemini skills"
+    "shell tools git node go docker tailscale ssh"
+    "shell tmux git tools node uv go docker ssh claude-code codex gemini skills"
 )
 PRESET_DESCS=(
     "Shell, tools, git — lightweight baseline"
@@ -310,7 +310,7 @@ Options:
                          devops     Containers, networking, Go
                          fullstack  Complete development environment
   --components LIST      Comma-separated component list:
-                         shell,tmux,git,tools,essential-tools,node,uv,go,docker,tailscale,ssh,claude-code,codex,gemini,skills
+                         shell,tmux,git,tools,node,uv,go,docker,tailscale,ssh,claude-code,codex,gemini,skills
   --gh-proxy URL         GitHub proxy URL (e.g., https://gh-proxy.org)
   -v, --verbose          Show raw script output (default: clean spinner)
   -h, --help             Show this help
