@@ -35,16 +35,19 @@ fi
 # Load uv into current shell
 export PATH="$HOME/.local/bin:$PATH"
 
-# Ensure ~/.local/bin is in shell PATH config
-_ensure_path_in_rc() {
+# Ensure ~/.local/bin is in shell PATH for both zsh and bash
+_ensure_local_bin_path() {
     local rc="$1"
+    local line='export PATH="$HOME/.local/bin:$PATH"'
+    # Skip if the shell isn't installed
     [[ -f "$rc" ]] || return 0
-    grep -q '\.local/bin' "$rc" 2>/dev/null && return 0
-    echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$rc"
+    # Check for explicit PATH export (not just env sourcing)
+    grep -qF "$line" "$rc" 2>/dev/null && return 0
+    printf '\n# uv / rig: ensure ~/.local/bin in PATH\n%s\n' "$line" >> "$rc"
     echo "  Added ~/.local/bin to PATH in $(basename "$rc")"
 }
-_ensure_path_in_rc "$HOME/.zshrc"
-_ensure_path_in_rc "$HOME/.bashrc"
+_ensure_local_bin_path "$HOME/.zshrc"
+_ensure_local_bin_path "$HOME/.bashrc"
 
 # Install Python if requested
 if [ -n "$UV_PYTHON" ]; then
