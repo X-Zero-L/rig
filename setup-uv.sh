@@ -35,6 +35,17 @@ fi
 # Load uv into current shell
 export PATH="$HOME/.local/bin:$PATH"
 
+# Ensure ~/.local/bin is in shell PATH config
+_ensure_path_in_rc() {
+    local rc="$1"
+    [[ -f "$rc" ]] || return 0
+    grep -q '\.local/bin' "$rc" 2>/dev/null && return 0
+    echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$rc"
+    echo "  Added ~/.local/bin to PATH in $(basename "$rc")"
+}
+_ensure_path_in_rc "$HOME/.zshrc"
+_ensure_path_in_rc "$HOME/.bashrc"
+
 # Install Python if requested
 if [ -n "$UV_PYTHON" ]; then
     echo "[2/2] Installing Python ${UV_PYTHON}..."
