@@ -73,6 +73,7 @@ else
         echo "  Installing Node.js $NODE_VERSION..."
         nvm install "$NODE_VERSION"
     fi
+    nvm use "$NODE_VERSION"
     nvm alias default "$NODE_VERSION"
 fi
 
