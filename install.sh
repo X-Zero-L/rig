@@ -115,7 +115,6 @@ COMP_NAMES=(
     "Tmux"
     "Git"
     "Essential Tools"
-    "Essential Tools"
     "Node.js (nvm)"
     "uv + Python"
     "Go (goenv)"
@@ -133,7 +132,6 @@ COMP_DESCS=(
     "tmux + Catppuccin + TPM plugins"
     "user.name + user.email + defaults"
     "rg, jq, fd, bat, gh, build tools"
-    "build-essential, wget, unzip, gh CLI"
     "nvm + Node.js 24"
     "uv package manager"
     "goenv + Go"
@@ -151,7 +149,6 @@ COMP_SCRIPTS=(
     setup-tmux.sh
     setup-git.sh
     setup-tools.sh
-    setup-tools.sh
     setup-node.sh
     setup-uv.sh
     setup-go.sh
@@ -165,7 +162,7 @@ COMP_SCRIPTS=(
 )
 
 # Dependencies: space-separated indices that must run first (empty = none)
-COMP_DEPS=("" "" "" "" "" "" "" "" "" "" "" "5" "5" "5" "5")
+COMP_DEPS=("" "" "" "" "" "" "" "" "" "" "4" "4" "4" "4")
 
 # Whether component needs API keys (2 = token-only, 1 = url+key)
 COMP_NEEDS_KEYS=(0 0 0 0 0 0 0 0 0 2 0 1 1 1 0)
