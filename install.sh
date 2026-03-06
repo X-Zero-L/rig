@@ -165,28 +165,28 @@ COMP_SCRIPTS=(
 COMP_DEPS=("" "" "" "" "" "" "" "" "" "" "4" "4" "4" "4")
 
 # Whether component needs API keys (2 = token-only, 1 = url+key)
-COMP_NEEDS_KEYS=(0 0 0 0 0 0 0 0 0 2 0 1 1 1 0)
+COMP_NEEDS_KEYS=(0 0 0 0 0 0 0 0 2 0 1 1 1 0)
 
 # Whether component needs sudo (dynamically set based on OS)
 _init_sudo_needs() {
     # macOS with Homebrew doesn't need sudo for most components
     if is_macos; then
-        COMP_NEEDS_SUDO=(0 0 0 0 0 0 0 0 1 1 1 0 0 0 0)
-        # shell, tmux, git, tools, essential-tools, node, uv, go: no sudo (brew installs to user dir)
+        COMP_NEEDS_SUDO=(0 0 0 0 0 0 0 1 1 1 0 0 0 0)
+        # shell, tmux, git, tools, node, uv, go: no sudo (brew installs to user dir)
         # docker, tailscale, ssh: still need sudo (system-level services)
         # claude-code, codex, gemini, skills: no sudo (npm global or user install)
     else
         # Linux: original behavior
-        COMP_NEEDS_SUDO=(1 1 0 1 1 0 0 0 1 1 1 0 0 0 0)
+        COMP_NEEDS_SUDO=(1 1 0 1 0 0 0 1 1 1 0 0 0 0)
     fi
 }
 _init_sudo_needs
 
 # Selection state
-COMP_SELECTED=(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0)
+COMP_SELECTED=(0 0 0 0 0 0 0 0 0 0 0 0 0 0)
 
 # Install-only mode: tool installed but API not configured (keys missing)
-COMP_INSTALL_ONLY=(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0)
+COMP_INSTALL_ONLY=(0 0 0 0 0 0 0 0 0 0 0 0 0 0)
 
 # --- Preset Definitions (parallel arrays, bash 3.2 compatible) ---------------
 
