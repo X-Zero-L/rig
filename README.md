@@ -40,6 +40,12 @@ curl -fsSL https://z.ls/rig | bash -s -- --gh-proxy https://gh-proxy.org
 # or: curl -fsSL https://gh-proxy.org/https://raw.githubusercontent.com/X-Zero-L/rig/master/install.sh | bash -s -- --gh-proxy https://gh-proxy.org
 ```
 
+> **💡 China users with a VPN subscription:** For the best experience, set up Clash **first** so all subsequent scripts run through a transparent proxy without needing `GH_PROXY`:
+> ```bash
+> curl -fsSL https://gh-proxy.org/https://raw.githubusercontent.com/X-Zero-L/rig/master/setup-clash.sh | bash -s -- 'https://your-subscription-url'
+> ```
+> Once Clash is running, use the standard (non-proxy) install commands above.
+
 Install everything non-interactively:
 
 ```bash

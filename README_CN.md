@@ -40,6 +40,12 @@ curl -fsSL https://z.ls/rig | bash -s -- --gh-proxy https://gh-proxy.org
 # 或: curl -fsSL https://gh-proxy.org/https://raw.githubusercontent.com/X-Zero-L/rig/master/install.sh | bash -s -- --gh-proxy https://gh-proxy.org
 ```
 
+> **💡 有机场订阅的国内用户：** 建议先安装 Clash，让后续所有脚本走透明代理，无需每次加 `GH_PROXY`：
+> ```bash
+> curl -fsSL https://gh-proxy.org/https://raw.githubusercontent.com/X-Zero-L/rig/master/setup-clash.sh | bash -s -- 'https://your-subscription-url'
+> ```
+> Clash 启动后，直接使用上方标准命令安装即可，无需再加代理前缀。
+
 非交互式安装全部：
 
 ```bash
