@@ -66,9 +66,10 @@ if [[ "$_current" != "none" && "$_current" != "system" && -z "$_USER_NODE_VERSIO
     echo "  Node.js $_current already installed, skipping."
 else
     # User specified a version, or no Node.js at all — install target
-    _target_version=$(nvm version "$NODE_VERSION" 2>/dev/null || echo "N/A")
-    if [[ "$_target_version" != "N/A" ]]; then
-        echo "  Node.js $NODE_VERSION already installed ($_target_version), skipping."
+    # Use `nvm ls` to check only nvm-managed versions, not system node
+    _target_version=$(nvm ls --no-colors "$NODE_VERSION" 2>/dev/null | grep -E 'v[0-9]' | head -1 | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' || echo "N/A")
+    if [[ "$_target_version" != "N/A" && -n "$_target_version" ]]; then
+        echo "  Node.js $NODE_VERSION already installed ($_target_version) via nvm, skipping."
     else
         echo "  Installing Node.js $NODE_VERSION..."
         nvm install "$NODE_VERSION"
