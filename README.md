@@ -42,7 +42,6 @@ curl -fsSL https://z.ls/rig | bash -s -- --gh-proxy https://gh-proxy.org
 
 > **💡 China users:** For the best experience, install Clash **first** — the setup script adds `clashctl` and `watch_proxy` to your shell rc, so proxy env vars are automatically active in every new terminal. Once Clash is running (`clashctl on`), all subsequent rig scripts work without `GH_PROXY`.
 > ```bash
-> # Subscription URL is optional — you can configure it later
 > curl -fsSL https://gh-proxy.org/https://raw.githubusercontent.com/X-Zero-L/rig/master/setup-clash.sh | bash -s -- 'https://your-subscription-url'
 > # Then enable proxy:
 > source ~/.bashrc && clashctl on
