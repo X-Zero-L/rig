@@ -117,7 +117,7 @@ else
     echo "    claude config set env.ANTHROPIC_AUTH_TOKEN <key>"
 fi
 
-# [4] Add alias
+# [4] Add alias and root env vars
 echo "[4/4] Adding alias..."
 ALIAS_LINE="alias cc='claude --dangerously-skip-permissions'"
 for rc in "$HOME/.bashrc" "$HOME/.zshrc"; do
@@ -126,6 +126,17 @@ for rc in "$HOME/.bashrc" "$HOME/.zshrc"; do
         echo "$ALIAS_LINE" >> "$rc"
     fi
 done
+
+# When running as root, Claude Code requires IS_SANDBOX=1 to bypass permission checks
+if [ "$(id -u)" -eq 0 ]; then
+    SANDBOX_LINE="export IS_SANDBOX=1"
+    for rc in "$HOME/.bashrc" "$HOME/.zshrc"; do
+        if [ -f "$rc" ] && ! grep -qF "$SANDBOX_LINE" "$rc"; then
+            echo "$SANDBOX_LINE" >> "$rc"
+            echo "  Added IS_SANDBOX=1 to $rc (required for root)"
+        fi
+    done
+fi
 
 echo ""
 echo "=== Done! ==="
