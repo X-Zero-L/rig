@@ -78,6 +78,17 @@ else
     nvm alias default "$NODE_VERSION"
 fi
 
+# Ensure nvm is initialized in zshrc (nvm install.sh only writes to .bashrc)
+_NVM_INIT='export NVM_DIR="$HOME/.nvm"\n[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"\n[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"'
+ZSHRC="$HOME/.zshrc"
+if [ -f "$ZSHRC" ] && ! grep -q 'NVM_DIR' "$ZSHRC"; then
+    printf '\n# nvm\n%b\n' "$_NVM_INIT" >> "$ZSHRC"
+    echo "  Added nvm init to ~/.zshrc"
+elif [ ! -f "$ZSHRC" ]; then
+    printf '# nvm\n%b\n' "$_NVM_INIT" > "$ZSHRC"
+    echo "  Created ~/.zshrc with nvm init"
+fi
+
 # Configure npm registry
 echo "[3/3] Configuring npm..."
 if [[ -n "$NPM_REGISTRY" ]]; then
