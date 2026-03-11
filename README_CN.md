@@ -40,11 +40,13 @@ curl -fsSL https://z.ls/rig | bash -s -- --gh-proxy https://gh-proxy.org
 # 或: curl -fsSL https://gh-proxy.org/https://raw.githubusercontent.com/X-Zero-L/rig/master/install.sh | bash -s -- --gh-proxy https://gh-proxy.org
 ```
 
-> **💡 有机场订阅的国内用户：** 建议先安装 Clash，让后续所有脚本走透明代理，无需每次加 `GH_PROXY`：
+> **💡 国内用户：** 建议先安装 Clash——安装脚本会将 `clashctl` 命令和 `watch_proxy` 写入 shell rc 文件，之后每个新终端会自动加载代理环境变量。启动代理后（`clashctl on`），后续所有 rig 脚本无需再加 `GH_PROXY`。
 > ```bash
+> # 订阅链接可选，也可以装完后再配置
 > curl -fsSL https://gh-proxy.org/https://raw.githubusercontent.com/X-Zero-L/rig/master/setup-clash.sh | bash -s -- 'https://your-subscription-url'
+> # 然后启用代理：
+> source ~/.bashrc && clashctl on
 > ```
-> Clash 启动后，直接使用上方标准命令安装即可，无需再加代理前缀。
 
 非交互式安装全部：
 
