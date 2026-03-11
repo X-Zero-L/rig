@@ -105,7 +105,6 @@ COMP_NAMES=(
     "Tmux"
     "Git"
     "Essential Tools"
-    "Clash Proxy"
     "Node.js (nvm)"
     "uv + Python"
     "Go (goenv)"
@@ -123,7 +122,6 @@ COMP_DESCS=(
     "tmux + Catppuccin + TPM plugins"
     "user.name + user.email + defaults"
     "rg, jq, fd, bat, gh, build tools"
-    "clash-for-linux with subscription"
     "nvm + Node.js 24"
     "uv package manager"
     "goenv + Go"
@@ -137,11 +135,11 @@ COMP_DESCS=(
 )
 
 # Whether component update needs sudo
-COMP_NEEDS_SUDO=(0 1 1 1 1 0 0 0 1 1 1 0 0 0 0)
+COMP_NEEDS_SUDO=(0 1 1 1 0 0 0 1 1 1 0 0 0 0)
 
 # Detection / selection / version state
-COMP_INSTALLED=(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0)
-COMP_SELECTED=(0 0 0 0 0 0 0 0 0 0 0 0 0 0 0)
+COMP_INSTALLED=(0 0 0 0 0 0 0 0 0 0 0 0 0 0)
+COMP_SELECTED=(0 0 0 0 0 0 0 0 0 0 0 0 0 0)
 VERSION_BEFORE=()
 VERSION_AFTER=()
 
