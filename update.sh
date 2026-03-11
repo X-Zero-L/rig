@@ -276,7 +276,6 @@ detect_installed() {
         "command -v tmux"
         "command -v git"
         "command -v rg && command -v jq"
-        "test -d $HOME/clash-for-linux"
         "command -v nvm || [[ -f $HOME/.nvm/nvm.sh ]]"
         "command -v uv"
         "command -v goenv || [[ -d $HOME/.goenv/bin ]]"
